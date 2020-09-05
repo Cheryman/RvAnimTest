@@ -8,13 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.contentcapture.DataRemovalRequest;
 
 import com.example.rvanimationtest.Adapters.NewsAdapter;
 import com.example.rvanimationtest.R;
 import com.example.rvanimationtest.utils.DataSource;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabSwitcher;
     private boolean isDark = false;
     private ConstraintLayout rootLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         iniNewsList();
 
-        //
+        // грузим сохраенный boolean
         isDark = getThemeStatePref();
         if (isDark){
             // DarkTheme is on

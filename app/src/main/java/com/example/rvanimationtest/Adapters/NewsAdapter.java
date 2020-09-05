@@ -23,7 +23,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private List<NewsItem> mData;
     private boolean isDark = false;
 
-
     public NewsAdapter(Context mContext, List<NewsItem> mData, boolean isDark) {
         this.mContext = mContext;
         this.mData = mData;
@@ -73,15 +72,14 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
             userImg = itemView.findViewById(R.id.imgUser);
 
-            if (isDark){
+            if (isDark) {
                 setDarkTheme();
             }
         }
 
-        private void setDarkTheme(){
+        private void setDarkTheme() {
             container.setBackgroundResource(R.drawable.card_bg_dark);
         }
     }
-
 
 }
