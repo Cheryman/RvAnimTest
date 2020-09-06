@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         iniViews();
 
-        iniNewsList();
-
         // грузим сохраенный boolean
         isDark = getThemeStatePref();
         if (isDark){
@@ -47,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             searchInput.setBackgroundResource(R.drawable.search_input_style);
             rootLayout.setBackgroundColor(getResources().getColor(R.color.white));
         }
+
+        iniNewsList();
 
         fabSwitcher.setOnClickListener(new View.OnClickListener() {
             @Override
