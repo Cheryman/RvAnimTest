@@ -7,7 +7,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.rvanimationtest.Adapters.NewsAdapter;
 import com.example.rvanimationtest.R;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fabSwitcher;
     private boolean isDark = false;
     private ConstraintLayout rootLayout;
+    private EditText searchInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
         isDark = getThemeStatePref();
         if (isDark){
             // DarkTheme is on
+            searchInput.setBackgroundResource(R.drawable.search_input_style_dark);
             rootLayout.setBackgroundColor(getResources().getColor(R.color.black));
         } else {
             // LightTheme is on
+            searchInput.setBackgroundResource(R.drawable.search_input_style);
             rootLayout.setBackgroundColor(getResources().getColor(R.color.white));
         }
 
@@ -48,13 +54,32 @@ public class MainActivity extends AppCompatActivity {
                 isDark = !isDark;
                 if (isDark) {
                     rootLayout.setBackgroundColor(getResources().getColor(R.color.black));
+                    searchInput.setBackgroundResource(R.drawable.search_input_style_dark);
                 } else {
                     rootLayout.setBackgroundColor(getResources().getColor(R.color.white));
+                    searchInput.setBackgroundResource(R.drawable.search_input_style);
                 }
 
                 newsAdapter = new NewsAdapter(getApplicationContext(), DataSource.getNewsItems(), isDark);
                 NewsRecyclerView.setAdapter(newsAdapter);
                 saveThemePref(isDark);
+            }
+        });
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                newsAdapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
@@ -78,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         NewsRecyclerView = findViewById(R.id.news_rv);
         fabSwitcher = findViewById(R.id.fab_theme_switcher);
         rootLayout = findViewById(R.id.root_layout);
+        searchInput = findViewById(R.id.search_input);
     }
 
     private void iniNewsList() {
