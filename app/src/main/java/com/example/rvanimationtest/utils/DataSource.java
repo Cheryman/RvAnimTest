@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DataSource {
 
-public static List<NewsItem> getNewsItems() {
+    public static List<NewsItem> getNewsItems() {
 
         List<NewsItem> newsList = new ArrayList<>();
         newsList.add(new NewsItem("Білоруські айтішники тікають до України",
@@ -28,7 +28,7 @@ public static List<NewsItem> getNewsItems() {
                 "9 серпень 2020", R.drawable.female2));
         newsList.add(new NewsItem("Сигнал від злиття чорних дір пролетів 7 млрд років і \"сколихнув\" Землю",
                 "Уявіть, як енергія восьми Сонць в один момент вивільняється у простір. Відголоски цього йшли до Землі 7 млрд років, але їх змогли зафіксувати вчені.",
-                "3 вересень 2020",R.drawable.male5));
+                "3 вересень 2020", R.drawable.male5));
         newsList.add(new NewsItem("Країни, які вимикають інтернет. Як і навіщо вони це роблять",
                 "Деякі держави вдаються до особливого виду репресій – позбавляють громадян доступу до інтернету.",
                 "11 серпень 2020", R.drawable.male4));
@@ -56,5 +56,4 @@ public static List<NewsItem> getNewsItems() {
 
         return newsList;
     }
-
 }
